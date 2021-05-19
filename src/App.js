@@ -1,24 +1,49 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/Home';
+import Error from './pages/Error';
+import Drink from './components/Drink';
+import About from './pages/About';
+import Navbar from './components/Navbar';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+
+
+// creating a custom mui theme
+const theme = createMuiTheme({ 
+  palette: {
+    primary: {
+      main:'#5995da'
+    },
+    secondary: {
+      main: '#BA462D'
+    },
+  },
+  typography: {
+    fontFamily: 'Quicksand',
+    fontWeightLight: 300, 
+    fontWeightRegular: 400, 
+    fontWeightMedium: 500,
+    fontWeightSemiBold: 600,
+  }
+})
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+return (
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/drink/:id" component={Drink} />
+            <Route path='*' component={Error} />
+          </Switch>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
