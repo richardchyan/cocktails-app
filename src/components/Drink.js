@@ -37,10 +37,10 @@ const Drink = ({ drinks }) => {
                            title={drink.name}
                         />
                         <CardContent className={classes.cardContent}>
-                           <Typography gutterBottom variant="h3">
+                           <Typography gutterBottom variant="h4">
                               {drink.name}
                            </Typography>
-                           <Typography variant="h10">
+                           <Typography variant="h8">
                               {drink.alcoholic}
                            </Typography>
                            <Typography variant="h6">

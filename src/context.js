@@ -6,7 +6,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
    const [loading, setLoading] = useState(true);
-   const [search, setSearch] = useState('a');
+   const [search, setSearch] = useState('');
    const [drinks, setDrinks] = useState([]);
 
    const fetchDrinks = async() => {
@@ -17,7 +17,7 @@ const AppProvider = ({ children }) => {
          const data = await response.json();
          console.log(data);
 
-         //grab drinks from the resulting object from search
+         //grab drinks objects from the resulting object from search
          const { drinks } = data;
          if (drinks){
             const newDrinks = drinks.map(item => {
@@ -37,13 +37,13 @@ const AppProvider = ({ children }) => {
          setLoading(false);
       } catch(error){
          console.log(error);
+         setLoading(false);
       }
 
    }
 
    useEffect(() => {
       fetchDrinks();
-
    },[search])
 
    return <AppContext.Provider value={{loading, search, drinks, setSearch}}>

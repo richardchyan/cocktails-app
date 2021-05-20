@@ -1,5 +1,5 @@
-import SearchForm from '../components/SearchForm';
 import DrinkList from '../components/DrinkList';
+import SearchForm from '../components/SearchForm';
 
 const Home = () => {
    return ( 

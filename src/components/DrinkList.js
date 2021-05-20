@@ -2,19 +2,10 @@ import React from 'react';
 import { useGlobalContext } from '../context';
 import Loading from './Loading';
 import Drink from './Drink';
+// import SearchForm from './SearchForm';
 import { Button, Container, Grid, Typography, Card, CardMedia, CardContent, CardActions, CssBaseline } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
- drinkList : {
-    
- }
-
-});
 
 const DrinkList = () => {
-
-   const classes = useStyles();
 
    const { loading, drinks } = useGlobalContext();
 
@@ -29,14 +20,11 @@ const DrinkList = () => {
    }
 
    return ( 
-      <>
-         <h1 className="drinks-heading">
-            List of drinks
-         </h1>
-         <div className={classes.drinkList}>
+      <React.Fragment>
+         <div className="drinks-heading">
             <Drink drinks={drinks} />
          </div>
-      </>
+      </React.Fragment>
     );
 }
  
