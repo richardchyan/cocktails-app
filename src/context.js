@@ -15,7 +15,6 @@ const AppProvider = ({ children }) => {
       try{
          const response = await fetch(`${url}${search}`);
          const data = await response.json();
-         console.log(data);
 
          //grab drinks objects from the resulting object from search
          const { drinks } = data;

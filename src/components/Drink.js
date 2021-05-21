@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Container, Grid, Typography, Card, CardMedia, CardContent, CardActions, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 
 const Drink = ({ drinks }) => {
 
+   const history = useHistory();
    const classes = useStyles();
 
    return (
@@ -28,7 +29,7 @@ const Drink = ({ drinks }) => {
          <Container className={classes.cardGrid} maxWidth='lg'>
             <Grid container spacing={5} justify="space-around">
                {drinks.map(drink => (
-                  <Grid item xs={10} sm={6} md={4}>
+                  <Grid item key={drink.id} xs={10} sm={6} md={4}>
                      <Card className={classes.card}>
                         <CardMedia 
                            component="img"
@@ -48,9 +49,15 @@ const Drink = ({ drinks }) => {
                            </Typography>
                         </CardContent>
                         <CardActions>
-                           <Button className={classes.detailsButton} alignItems="center" justify="center" variant="contained" size="large" color="primary">
+                           <Button 
+                           className={classes.detailsButton} 
+                           component={Link}
+                           to={`/drink/${drink.id}`}
+                           // onClick={() => history.push('/drink/${drink.id}')}
+                           variant="contained" 
+                           size="large" color="primary">
                               Details
-                           </Button>
+                           </Button>                          
                         </CardActions>
                      </Card>
                </Grid>
