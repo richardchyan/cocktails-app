@@ -2,11 +2,26 @@ import { useParams, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Loading from '../components/Loading';
 import { Container, Grid, Card, CardContent, Typography, CardMedia, CardActionArea, CssBaseline } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i="
 
+const useStyles = makeStyles({
+
+image: {
+
+},
+
+details: {
+ 
+}
+
+
+});
+
 const DrinkDetails = () => {
 
+   const classes = useStyles();
    const { id } = useParams();
    const [loading, setLoading] = useState(false);
    const [details, setDetails] = useState(null);
@@ -49,6 +64,7 @@ const DrinkDetails = () => {
       getDrink();
    },[id])
 
+
    if (loading){
       return <Loading />
    }
@@ -59,28 +75,21 @@ const DrinkDetails = () => {
 
    const { name, image, alcoholic, ingredients, mixInstructions } = details;
 
-   console.log(image);
-
    return ( 
       <React.Fragment>
          <CssBaseline />
          <Container>
-            <Grid container>
-               <Grid item id="drink-image" xs={12} sm={8} md={8}>
+            <Grid container maxWidth='lg' alignItems="center">
+               <Grid item id="drink-image" className={classes.image} xs={12} sm={8} md={6}>
                   <Card>
                      <CardMedia 
                         component="img"
                         image={image}
                         title={name}
                            />
-                     <CardContent>
-                        <Typography>
-                           Hello
-                        </Typography>
-                     </CardContent>
                   </Card>
                </Grid>
-               <Grid item xs={12} sm={4} md={4}>
+               <Grid className={classes.details} item xs={12} sm={4} md={6}>
                   <Card>
                      <CardContent>
                         <Typography variant="h3">

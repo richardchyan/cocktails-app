@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles({
    appBar: { 
       padding: '.5rem 0',
+      marginBottom: '50px',
    },
    title: {
       fontSize: '2rem',
@@ -23,7 +24,10 @@ const Navbar = () => {
       <div className="navbar">
          <AppBar className={classes.appBar} position="static">
             <Toolbar>
-               <Typography className={classes.title} variant="h3">Richard's Cocktail Database</Typography>
+               <Button className={classes.title} onClick={() => history.push('/')}>
+                  <Typography  variant="h3">Richard's Cocktail Database</Typography>
+               </Button>
+               
                <Button color="inherit" onClick={() => history.push('/')}>Home</Button>
                <Button color="inherit" onClick={() => history.push('/about')}>About</Button>
 

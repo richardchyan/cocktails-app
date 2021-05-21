@@ -1,8 +1,10 @@
 import {CssBaseline, Typography, Container} from '@material-ui/core';
 
 const About = () => {
+
+
    return (  
-      <div className="about">
+      <div className='about'>
          <CssBaseline />
          <Container maxWidth="sm" mx={5} gutterBottom>
             <Typography> 
