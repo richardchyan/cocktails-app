@@ -13,7 +13,7 @@ const DrinkList = () => {
       return <Loading />;
    }
 
-   // if cocktails don't get returned, then add an error aka the array is less than 1, aka it's empty
+   // if cocktails don't get returned, then add an error aka the array is less than 1 and empty
 
    if(drinks.length < 1){
       return <h1> No drinks matched your search</h1>

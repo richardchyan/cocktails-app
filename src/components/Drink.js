@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Container, Grid, Typography, Card, CardMedia, CardContent, CardActions, CssBaseline } from '@material-ui/core';
+import { Button, Container, Grid, Typography, Card, CardMedia, CardContent, CardActions, CssBaseline, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -11,6 +11,7 @@ const useStyles = makeStyles({
    },
    detailsButton: {
       justifyContent: 'center',
+      textAlign:'center',
    },
    card: {
       justifyContent: 'center',
@@ -27,7 +28,7 @@ const Drink = ({ drinks }) => {
       <React.Fragment> 
          
          <Container className={classes.cardGrid} maxWidth='lg'>
-            <Grid container spacing={5} justify="space-around">
+            <Grid container spacing={5} justify="center" >
                {drinks.map(drink => (
                   <Grid item key={drink.id} xs={10} sm={6} md={4}>
                      <Card className={classes.card}>
@@ -48,16 +49,17 @@ const Drink = ({ drinks }) => {
                               {drink.glass}
                            </Typography>
                         </CardContent>
-                        <CardActions>
-                           <Button 
-                           className={classes.detailsButton} 
-                           component={Link}
-                           to={`/drink/${drink.id}`}
-                           // onClick={() => history.push('/drink/${drink.id}')}
-                           variant="contained" 
-                           size="large" color="primary">
-                              Details
-                           </Button>                          
+                        <CardActions display="flex" justifyContent='center'>
+                           <Box m="auto">
+                              <Button 
+                              className={classes.detailsButton} 
+                              component={Link}
+                              to={`/drink/${drink.id}`}
+                              variant="contained" 
+                              size="large" color="primary">
+                                 Details
+                              </Button>   
+                           </Box>                                 
                         </CardActions>
                      </Card>
                </Grid>
